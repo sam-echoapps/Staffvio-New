@@ -336,6 +336,15 @@ function (oj,ko,$, app, ojconverterutils_i18n_1, ArrayDataProvider,  ojknockout_
                 self.genderListDP = new ArrayDataProvider(self.genderList, {keyAttributes: 'value'});
                 self.gender = ko.observable();
 
+                self.tabData = [
+                    { id: "basic_profile", label: "Basic Info" },
+                    { id: "credential", label: "Credential" },
+                ];
+                self.selectedTab = ko.observable("basic_profile");  
+                self.usernameStaff = ko.observable();
+                self.passwordStaff = ko.observable();
+
+
                 self.connected = function () {
                     if (sessionStorage.getItem("userName") == null) {
                         self.router.go({ path: 'signin' });
@@ -435,6 +444,9 @@ function (oj,ko,$, app, ojconverterutils_i18n_1, ArrayDataProvider,  ojknockout_
                         }
                         self.have_transportation(data[0][19]);
                         self.gender(data[0][21]);
+
+                        self.usernameStaff(data[0][11])
+                        self.passwordStaff(data[2])
                 }
                 })
             }
@@ -699,6 +711,46 @@ function (oj,ko,$, app, ojconverterutils_i18n_1, ArrayDataProvider,  ojknockout_
                         sessionStorage.setItem('profile_status','Pending');
                        }
                        location.reload();
+                    }
+                })  
+
+            }
+
+            self.selectedTabAction = ko.computed(() => { 
+                if(self.selectedTab() == 'credential'){
+                    $("#credential").show();
+                    $("#basic_profile").hide();
+                }else if(self.selectedTab() == 'basic_profile'){
+                    $("#credential").hide();
+                    $("#basic_profile").show();
+                }
+            });
+
+            self.credentialUpdate = function (event,data) {
+                document.querySelector('#openUpdateCredentialProgress').open();
+                var BaseURL = sessionStorage.getItem("BaseURL")
+                $.ajax({
+                    url: BaseURL+ "/jpStaffCredentialUpdate",
+                    type: 'POST',
+                    data: JSON.stringify({
+                        staffId : sessionStorage.getItem("userId"),
+                        password : self.passwordStaff()
+                    }),
+                    dataType: 'json',
+                    timeout: sessionStorage.getItem("timeInetrval"),
+                    context: self,
+                    error: function (xhr, textStatus, errorThrown) {
+                        if(textStatus == 'timeout'){
+                            document.querySelector('#openUpdateCredentialProgress').close();
+                            document.querySelector('#Timeout').open();
+                        }
+                    },
+                    success: function (data) {
+                       console.log("Success")
+                       document.querySelector('#openUpdateCredentialProgress').close();
+                       self.updateStaffMsg(data[0]);
+                       document.querySelector('#openStaffUpdateResult').open();
+                       //location.reload();
                     }
                 })  
 

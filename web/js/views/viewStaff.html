@@ -5,6 +5,24 @@
     <div id="componentDemoContent" style="width: 1px; min-width: 100%;">
       
       <div id="moduleDemo">    
+
+        <div class="oj-panel oj-xl-margin-4x tab-bg-style">
+          <div class="oj-flex oj-sm-justify-content-space-around oj-sm-align-items-center">
+              <oj-buttonset-one id="setMultipleButtons" value="{{selectedTab}}" aria-label="Choose only one format">
+            <oj-bind-for-each data="[[tabData]]">
+              <template>
+                <oj-option value="[[$current.data.id]]">
+                  <span>
+                    <oj-bind-text value="[[$current.data.label]]"></oj-bind-text>
+                  </span>
+                </oj-option>
+              </template>
+            </oj-bind-for-each>
+          </oj-buttonset-one>
+        </div>
+      </div>
+      
+      <div id="basic_profile">     
         <div class="hint" style="border: 1px solid #80808036; margin: 10px;padding: 10px;background-color: #d1ecf1; display: flex;align-items: baseline;">
           <i class="bi bi-info-circle-fill" style="color: #002366;font-size: 20px;"></i> &nbsp;&nbsp; The candidate is requested to update profile details.
         </div> 
@@ -125,6 +143,50 @@
            </div>
           </div>
       </div>
+    </div>
+
+
+    <div id="credential" style="display: none;">
+      <div class="hint" style="border: 1px solid #80808036; margin: 10px;padding: 10px;background-color: #d1ecf1; display: flex;align-items: baseline;">
+        <i class="bi bi-info-circle-fill" style="color: #002366;font-size: 20px;"></i> &nbsp;&nbsp;    You can manage the staff credentials here.        
+      </div> 
+      <div
+      class="oj-panel oj-flex oj-sm-margin-2x-bottom oj-xl-margin-3x oj-xl-padding-5x oj-lg-margin-3x oj-lg-padding-7x oj-md-margin-3x oj-md-padding-4x oj-sm-margin-1x oj-sm-padding-1x">
+      <div
+        class="oj-panel  oj-sm-margin-2x-bottom oj-xl-margin-3x oj-xl-padding-3x oj-lg-margin-3x oj-lg-padding-7x oj-md-margin-3x oj-md-padding-4x oj-sm-margin-1x oj-sm-padding-1x oj-md-5 oj-sm-12">
+        <oj-validation-group id="credentialValidation" role="group" valid="{{groupValid}}"
+        aria-labelledby="grouplabelid" disbaled>
+        
+        <oj-input-text required id="user_name" label-hint="User Name" value="{{usernameStaff}}" clear-icon="always" disabled>
+        </oj-input-text>
+        </oj-validation-group>
+      </div>
+      <div
+        class="oj-panel  oj-sm-margin-2x-bottom oj-xl-margin-3x oj-xl-padding-3x oj-lg-margin-3x oj-lg-padding-7x oj-md-margin-3x oj-md-padding-4x oj-sm-margin-1x oj-sm-padding-1x oj-md-5 oj-sm-12">
+        <oj-validation-group id="credSec2" role="group" valid="{{groupValid}}"
+        aria-labelledby="grouplabelid">
+    
+        <oj-input-text required id="password" label-hint="Password" value="{{passwordStaff}}" clear-icon="always">
+        </oj-input-text>
+      </oj-validation-group>
+      </div>
+    </div>
+    <div style="display: flex; justify-content: center; gap: 1em;"
+    class="oj-panel oj-sm-margin-2x-bottom oj-xl-margin-2x oj-xl-padding-2x oj-lg-margin-2x oj-lg-padding-2x oj-md-margin-2x oj-md-padding-2x oj-sm-margin-1x oj-sm-padding-1x">
+    <div class="oj-flex-bar">
+        <oj-button id="updateBtn" class="oj-flex-bar-end" chroming='callToAction' on-oj-action="[[credentialUpdate]]">
+            Update
+        </oj-button>
+    </div>
+    <div class="oj-flex-bar">
+        <oj-button id="sendBtn" class="oj-flex-bar-end" chroming='callToAction' on-oj-action="[[sendCredential]]">
+            Send
+        </oj-button>
+    </div>
+</div>
+
+      </div>
+
 
       
 
@@ -134,6 +196,22 @@
         </oj-progress-bar>
       </div>
     </oj-dialog>
+
+    <oj-dialog id="openUpdateCredentialProgress" class="popupProgress" dialog-title="Updating Staff Credential..." modality="modeless">
+      <div slot="body">
+        <oj-progress-bar id="createbar" class="oj-progress-bar-embedded" value="-1">
+        </oj-progress-bar>
+      </div>
+    </oj-dialog>
+
+    
+    <oj-dialog id="openSendCredentialProgress" class="popupProgress" dialog-title="Sending Staff Credentials" modality="modeless">
+      <div slot="body">
+        <oj-progress-bar id="createbar" class="oj-progress-bar-embedded" value="-1">
+        </oj-progress-bar>
+      </div>
+    </oj-dialog>
+
     <oj-dialog id="openStaffUpdateResult" dialog-title="Update Staff Details" modality="modeless"  style="display:none;width:350px;min-width:240px;max-width:450px;">
       <div slot="body">
         <oj-bind-text value='[[updateStaffMsg]]'></oj-bind-text>
@@ -143,7 +221,18 @@
           OK
         </oj-button>
       </div>
-    </oj-dialog>      
+    </oj-dialog>  
+    
+    <oj-dialog id="openStaffMailResult" dialog-title="Staff Credentials Send" modality="modeless"  style="display:none;width:350px;min-width:240px;max-width:450px;">
+      <div slot="body">
+        <oj-bind-text value='[[updateStaffMsg]]'></oj-bind-text>
+      </div>
+      <div  class="oj-flex-bar" slot="footer">
+        <oj-button id="okdelButton" class="oj-flex-bar-start oj-button-cancel" on-oj-action="[[popupOKClose]]">
+          OK
+        </oj-button>
+      </div>
+    </oj-dialog> 
     </div>
   </div>
 

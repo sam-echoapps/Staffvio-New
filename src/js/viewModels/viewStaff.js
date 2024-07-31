@@ -336,6 +336,14 @@ function (oj,ko,$, app, ojconverterutils_i18n_1, ArrayDataProvider,  ojknockout_
                 self.genderListDP = new ArrayDataProvider(self.genderList, {keyAttributes: 'value'});
                 self.gender = ko.observable();
 
+                self.tabData = [
+                    { id: "basic_profile", label: "Basic Info" },
+                    { id: "credential", label: "Credential" },
+                ];
+                self.selectedTab = ko.observable("basic_profile");  
+                self.usernameStaff = ko.observable();
+                self.passwordStaff = ko.observable();
+
                 self.connected = function () {
                     if (sessionStorage.getItem("userName") == null) {
                         self.router.go({ path: 'signin' });
@@ -435,6 +443,10 @@ function (oj,ko,$, app, ojconverterutils_i18n_1, ArrayDataProvider,  ojknockout_
                         }
                         self.have_transportation(data[0][19]);
                         self.gender(data[0][21]);
+                        
+                        console.log(data[2])
+                        self.usernameStaff(data[0][11])
+                        self.passwordStaff(data[2])
                 }
                 })
             }
@@ -528,6 +540,11 @@ function (oj,ko,$, app, ojconverterutils_i18n_1, ArrayDataProvider,  ojknockout_
                     self.startOpened(false);
                     getProfile();
                 };
+
+                self.popupOKClose = function (event) {
+                    location.reload()
+                };
+
                /*  self.selectListener = function (event,data) {
                     const result = event.detail.files;
                     const files = result[0];
@@ -704,6 +721,77 @@ function (oj,ko,$, app, ojconverterutils_i18n_1, ArrayDataProvider,  ojknockout_
                     }
                 })  
 
+            }
+
+            self.selectedTabAction = ko.computed(() => { 
+                if(self.selectedTab() == 'credential'){
+                    $("#credential").show();
+                    $("#basic_profile").hide();
+                }else if(self.selectedTab() == 'basic_profile'){
+                    $("#credential").hide();
+                    $("#basic_profile").show();
+                }
+            });
+
+            self.credentialUpdate = function (event,data) {
+                document.querySelector('#openUpdateCredentialProgress').open();
+                var BaseURL = sessionStorage.getItem("BaseURL")
+                $.ajax({
+                    url: BaseURL+ "/jpStaffCredentialUpdate",
+                    type: 'POST',
+                    data: JSON.stringify({
+                        staffId : sessionStorage.getItem("staffId"),
+                        password : self.passwordStaff()
+                    }),
+                    dataType: 'json',
+                    timeout: sessionStorage.getItem("timeInetrval"),
+                    context: self,
+                    error: function (xhr, textStatus, errorThrown) {
+                        if(textStatus == 'timeout'){
+                            document.querySelector('#openUpdateCredentialProgress').close();
+                            document.querySelector('#Timeout').open();
+                        }
+                    },
+                    success: function (data) {
+                       console.log("Success")
+                       document.querySelector('#openUpdateCredentialProgress').close();
+                       self.updateStaffMsg(data[0]);
+                       document.querySelector('#openStaffUpdateResult').open();
+                       //location.reload();
+                    }
+                })  
+
+            }
+
+            self.sendCredential  = function (event,data) {
+                    var BaseURL = sessionStorage.getItem("BaseURL")
+                    const credentialFormValid = self._checkValidationGroup("credentialValidation"); 
+                    if(credentialFormValid && self.usernameStaff() != '' && self.passwordStaff() != ''){
+                            let popup = document.getElementById("openSendCredentialProgress");
+                            popup.open();
+                                $.ajax({
+                                    url: BaseURL+"/sendStaffCredential",
+                                    type: 'POST',
+                                    data: JSON.stringify({
+                                        name : self.firstName() + " " + self.lastName(),
+                                        email : self.usernameStaff(),
+                                        password : self.passwordStaff(),
+                                    }),
+                                    dataType: 'json',
+                                    timeout: sessionStorage.getItem("timeInetrval"),
+                                    context: self,
+                                    error: function (xhr, textStatus, errorThrown) {
+                                        console.log(textStatus);
+                                    },
+                                    success: function (data) {
+                                       console.log(data)
+                                       let popup = document.getElementById("openSendCredentialProgress");
+                                       popup.close();
+                                       self.updateStaffMsg(data[0]);
+                                       document.querySelector('#openStaffMailResult').open();
+                                    }
+                                })
+                            }
             }
             
 
