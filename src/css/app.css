@@ -1244,7 +1244,8 @@ max-width: 20rem;
 }
 
 .contentStyle{
-  background-color: #eceff3;
+/*   background-color: #eceff3;
+ */  background-color: #ffffff;
 }
 
 .approvedStaff{
@@ -1391,7 +1392,8 @@ max-width: 20rem;
 }
 
 .sampleDemo{
-  background-color: white;;
+  background-color: white;
+  height:100vh;
 }
 
 .addClientAlign{
@@ -1707,7 +1709,7 @@ color:white;
 
 .inner-side-panel {
   width: 250px;
-  background-color: #e9ecef;
+  background-color: #f6f7f8;
   height: 100vh;
   color: gray;
   padding: 20px;
@@ -1825,6 +1827,14 @@ color:white;
 .copyright-text-right {
   text-align: right;
   margin-right: 15px;
+}
+
+.body-bg{
+background-color: #f0f1f7;
+}
+
+.text-color-style{
+  color:black
 }
 
 @media only screen and (max-width: 768px) {

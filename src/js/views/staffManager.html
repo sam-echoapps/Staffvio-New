@@ -6,7 +6,7 @@
   <div class="loader"></div>
 </div> 
 
-<div class="sampleDemo" id="mainView" style="display:none">
+<div class="sampleDemo body-bg" id="mainView" style="display:none">
 <!--   <div class="oj-xl-margin-4x">
     <div class="hint" style="border: 1px solid #80808036; margin: 10px;padding: 10px;background-color: #d1ecf1;">
       <i class="bi bi-info-circle-fill" style="color: #002366;font-size: 20px;"></i> &nbsp;&nbsp;This section allows you to switch the activated and deactivated staff list.
@@ -14,23 +14,26 @@
   </div> -->
   <oj-bind-if test="[[ListAction() === 'Active Staffs']]">
   <div class="oj-xl-margin-4x">
-    <div class="hint" style="border: 1px solid #80808036; margin: 10px;padding: 10px;background-color: #d1ecf1;">
-      <i class="bi bi-info-circle-fill" style="color: #002366;font-size: 20px;"></i>&nbsp;&nbsp;This section allows you to switch the activated and deactivated staff list. Here you can view the active staffs and manages your vetted and verified staff members. You can edit and deactivate staffs, manage certificates, documents etc. from here.
+    <div class="hint" style="border: 1px solid #80808036; margin: 10px;padding: 10px;background-color: #ffffff;">
+      <i class="bi bi-info-circle-fill" style="color: #6f42c1;font-size: 20px;"></i>&nbsp;&nbsp;
+      <span style="color: #171616;">
+      This section allows you to switch the activated and deactivated staff list. Here you can view the active staffs and manages your vetted and verified staff members. You can edit and deactivate staffs, manage certificates, documents etc. from here.
+      </span>
     </div>     
   </div>
 </oj-bind-if>
 
 <oj-bind-if test="[[ListAction() === 'Inactive Staffs']]">
   <div class="oj-xl-margin-4x">
-    <div class="hint" style="border: 1px solid #80808036; margin: 10px;padding: 10px;background-color: #d1ecf1;">
-      <i class="bi bi-info-circle-fill" style="color: #002366;font-size: 20px;"></i>&nbsp;&nbsp;This section allows you to switch the activated and deactivated staff list. Here you can view the Inactive staffs and manages your vetted and verified staff members. You can edit and activate staffs, manage certificates, documents etc. from here.
+    <div class="hint" style="border: 1px solid #b0b4c0; margin: 10px;padding: 10px;background-color: #ffffff;">
+      <i class="bi bi-info-circle-fill" style="color: #6f42c1;font-size: 20px;"></i>&nbsp;&nbsp;This section allows you to switch the activated and deactivated staff list. Here you can view the Inactive staffs and manages your vetted and verified staff members. You can edit and activate staffs, manage certificates, documents etc. from here.
     </div>     
   </div>
 </oj-bind-if>
 
   <div class="oj-flex">
     <div class="oj-xl-margin-4x oj-sm-margin-4x">
-      <h3><strong>&nbsp;&nbsp;<oj-bind-text value="[[ListAction]]"></oj-bind-text></strong></h3>
+      <h3 class="text-color-style"><strong>&nbsp;&nbsp;<oj-bind-text value="[[ListAction]]"></oj-bind-text></strong></h3>
     </div>
     <div class="oj-md-6 oj-sm-12"></div>
     <oj-bind-if test="[[ListAction() === 'Active Staffs']]">
@@ -53,7 +56,7 @@
      </oj-bind-if>
       </div>
       <oj-bind-if test="[[ListAction() === 'Active Staffs']]">
-    <div class="oj-panel oj-xl-margin-4x">
+    <div class="oj-xl-margin-4x body-bg">
       <oj-list-view id="listviewtwo" aria-label="multicolumn with list item layout" data="[[dataProvider1]]"
       class="oj-sm-padding-2x-vertical" selection-mode="multiple" selected="{{selectorSelectedItems}}">
       <template slot="itemTemplate" data-oj-as="item">

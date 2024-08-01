@@ -2,11 +2,15 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" href="css/postcode.css" type="text/css" />
 
-<div class="sampleDemo">
+<div class="sampleDemo body-bg">
   <div class="oj-xl-margin-4x">
-    <div class="hint" style="border: 1px solid #80808036; margin: 10px;padding: 10px;background-color: #d1ecf1;">
-      <i class="bi bi-info-circle-fill" style="color: #002366;font-size: 20px;"></i> &nbsp;&nbsp;In this section, you can add and edit new clients. You can also do the Client related settings such as their payment type, shift configuration etc.
-    </div>       
+    <div class="hint" style="border: 1px solid #b0b4c0; margin: 10px; padding: 10px; background-color: #ffffff;">
+      <i class="bi bi-info-circle-fill" style="color: #6f42c1; font-size: 20px;"></i> &nbsp;&nbsp;
+      <span style="color: #171616;">
+          In this section, you can add and edit new clients. You can also do the Client related settings such as their payment type, shift configuration, etc.
+      </span>
+  </div>
+     
     <div class="oj-flex addClientAlign">
   <!--     <div class="oj-sm-10"></div>
    -->    <oj-button chroming="callToAction" class="oj-xl-margin-4x" on-oj-action="[[openAddClientDialog]]">
@@ -15,7 +19,7 @@
     </div>
   </div>
 
-  <div class="oj-panel oj-xl-margin-4x">
+  <div class="oj-xl-margin-4x body-bg">
     <oj-list-view id="listviewtwo" aria-label="multicolumn with list item layout" data="[[dataProvider1]]"
     class="oj-sm-padding-2x-vertical" selection-mode="multiple" selected="{{selectorSelectedItems}}">
     <template slot="itemTemplate" data-oj-as="item">
