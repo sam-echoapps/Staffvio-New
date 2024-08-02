@@ -1,29 +1,40 @@
-define(['ojs/ojcore', 'knockout', 'jquery', 'appController', "ojs/ojmodulerouter-adapter", "ojs/ojarraydataprovider", 
-    "ojs/ojknockout", "ojs/ojlistview", "ojs/ojmodule-element"], 
-    function (oj, ko, $, app, ModuleRouterAdapter, ArrayDataProvider) {
-    "use strict";
-    class ViewModel {
-        constructor(args) {
-            var self = this
+define(['ojs/ojcore',"knockout","jquery","appController", "ojs/ojarraydataprovider", "ojs/ojmodulerouter-adapter", 
+    "ojs/ojcorerouter", "ojs/ojurlparamadapter",  "ojs/ojinputsearch"], 
+    function (oj,ko,$, app, ArrayDataProvider, ModuleRouterAdapter, CoreRouter, UrlParamAdapter) {
 
-            self.DepName = args.routerState.detail.dep_url;
-            self.DepType = args.routerState.detail.dep_type;
-            self.record = ko.observable();
-            self.profileStatus = ko.observable();
+        class Help {
+            constructor(args) {
+                var self = this;
+
+                self.connected = function () {
+                    if (sessionStorage.getItem("userName") == null) {
+                        self.router.go({path : 'signin'});                        
+                    }
+                    else {
+                        app.onAppSuccess();
+                    }
+                }
+                self.role = ko.observable(sessionStorage.getItem("userRole"));
                 
-            self.router = args.parentRouter;
+                self.value = ko.observable();
+                self.suggestions = [
+                    { value: "IE", label: "Internet Explorer" },
+                    { value: "FF", label: "Firefox" },
+                    { value: "CH", label: "Chrome" },
+                    { value: "OP", label: "Opera" },
+                    { value: "SA", label: "Safari" },
+                ];
+                self.suggestionsDP = new ArrayDataProvider(self.suggestions, {
+                    keyAttributes: "value",
+                });
 
-            self.connected = function () {
-                if (sessionStorage.getItem("userName") == null) {
-                    self.router.go({path : 'signin'});
+                self.goToPage = (e)=>{
+                    const page = e.currentTarget.id
+                    window.location.href = `/?ojr=${page}`;
                 }
-                else {
-                    app.onAppSuccess();
-                }
+               
             }
-            
         }
-        
+        return  Help;
     }
-    return ViewModel;
-});
+);

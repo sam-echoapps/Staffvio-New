@@ -64,6 +64,8 @@ if(sessionStorage.getItem('userRole')=='staff'){
    { path: 'help', detail : {label: 'Help',iconClass: 'oj-navigationlist-item-icon fa fa-question-circle'} },
    { path: 'dashboardStaff', detail : {label: 'Dashboard',iconClass: 'oj-navigationlist-item-icon fa fa-home'} },
    { path: 'privacyPolicy', detail : {label :'Privacy policy',iconClass: 'oj-navigationlist-item-icon fa fa-id-card'} },
+   { path: "guideManageAdmin", detail: { label: "Help", iconClass: "fa-solid fa-magnifying-glass", },},
+
  ];  
 }else if(sessionStorage.getItem('userRole')=='Accounts'){
  var navData = [
@@ -71,6 +73,9 @@ if(sessionStorage.getItem('userRole')=='staff'){
    { path: 'signin', detail : {label: 'SignIn',iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-chart-icon-24'} },
    { path: 'clientProfileAccounts', detail : {label: 'My Profile',iconClass: 'oj-navigationlist-item-icon fa fa-user'} },
    { path: 'homeAccounts', detail : {label: 'Home',iconClass: 'oj-navigationlist-item-icon fa fa-home'} },
+   { path: 'help', detail : {label: 'Help',iconClass: 'oj-navigationlist-item-icon fa fa-question-circle'} },
+   { path: "guideManageAdmin", detail: { label: "Help", iconClass: "fa-solid fa-magnifying-glass", },},
+
  ];  
 }
 else if(sessionStorage.getItem('userRole')=='Manager'){
@@ -93,6 +98,9 @@ else if(sessionStorage.getItem('userRole')=='Manager'){
    { path: 'clientPaidInvoiceList', detail : {label: 'Client Paid Invoice List',iconClass: 'oj-navigationlist-item-icon fa fa-user'}},
    { path: 'clientViewPaidInvoice', detail : {label: 'Client View Paid Invoice',iconClass: 'oj-navigationlist-item-icon fa fa-user'}},
    { path: 'dashboardClient', detail : {label: 'Dashboard',iconClass: 'oj-navigationlist-item-icon fa fa-home'} },
+   { path: 'help', detail : {label: 'Help',iconClass: 'oj-navigationlist-item-icon fa fa-question-circle'} },
+   { path: "guideManageAdmin", detail: { label: "Help", iconClass: "fa-solid fa-magnifying-glass", },},
+
  ];  
 }
 else{
@@ -144,6 +152,9 @@ else{
    { path: 'dashboardStaff', detail : {label: 'Dashboard',iconClass: 'oj-navigationlist-item-icon fa fa-home'} },
    { path: 'addCompany', detail : {label :'Add Company',iconClass: 'oj-navigationlist-item-icon fa fa-id-card'} },
    { path: 'privacyPolicy', detail : {label :'Privacy policy',iconClass: 'oj-navigationlist-item-icon fa fa-id-card'} },
+   { path: 'help', detail : {label: 'Help',iconClass: 'oj-navigationlist-item-icon fa fa-question-circle'} },
+   { path: "guideManageAdmin", detail: { label: "Help", iconClass: "fa-solid fa-magnifying-glass", },},
+
 /*           { path: 'postcode', detail : {label: 'Postcode',iconClass: 'oj-navigationlist-item-icon fa fa-calendar'} }
 */
  ];
@@ -207,6 +218,7 @@ if (sessionStorage.getItem("userRole") == "staff") {
        {"name": "Company Calendar","id": "companyCalendar","icons": "fa-solid fa fa-calendar-alt", "path":"companyCalendar"},
      ]
    },
+   {"name": "Help","id": "help","icons": "fa-solid fa fa-question-circle", "path":"help"},
    // {"name": "Download","id": "download","icons": "fa-solid fa fa-file-invoice", "path":"download"},
  ]
 }
