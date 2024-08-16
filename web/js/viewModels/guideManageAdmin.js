@@ -55,6 +55,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'appController', "ojs/ojmodulerouter
             var records = { 
                 "childPath" : [
                     { "path" : "guideManageProfile", "label" : "How to audit staff profile sections?"},
+                    { "path" : "guideManageInvoice", "label" : "How to create and manage invoice?"},
                     // { "path" : "guideEditStudent", "label" : "How to edit a student’s profile?"},
                     // { "path" : "guideChangeStatus", "label" : "How to change the status, staff or office of a student?"},
                     // { "path" : "guideStudentLog", "label" : "How to add a student log?"},
@@ -93,6 +94,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'appController', "ojs/ojmodulerouter
             self.router = self.args.parentRouter.createChildRouter([
                 { path: '', redirect: 'guideManageProfile' },
                 { path: 'guideManageProfile' },
+                { path: 'guideManageInvoice' },
             ]);
 
             self.router.currentState.subscribe((args) => {

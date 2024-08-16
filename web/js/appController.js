@@ -65,6 +65,7 @@ if(sessionStorage.getItem('userRole')=='staff'){
    { path: 'dashboardStaff', detail : {label: 'Dashboard',iconClass: 'oj-navigationlist-item-icon fa fa-home'} },
    { path: 'privacyPolicy', detail : {label :'Privacy policy',iconClass: 'oj-navigationlist-item-icon fa fa-id-card'} },
    { path: "guideManageAdmin", detail: { label: "Help", iconClass: "fa-solid fa-magnifying-glass", },},
+   { path: "guideManageClient", detail: { label: "Help", iconClass: "fa-solid fa-magnifying-glass", },},
 
  ];  
 }else if(sessionStorage.getItem('userRole')=='Accounts'){
@@ -75,6 +76,7 @@ if(sessionStorage.getItem('userRole')=='staff'){
    { path: 'homeAccounts', detail : {label: 'Home',iconClass: 'oj-navigationlist-item-icon fa fa-home'} },
    { path: 'help', detail : {label: 'Help',iconClass: 'oj-navigationlist-item-icon fa fa-question-circle'} },
    { path: "guideManageAdmin", detail: { label: "Help", iconClass: "fa-solid fa-magnifying-glass", },},
+   { path: "guideManageClient", detail: { label: "Help", iconClass: "fa-solid fa-magnifying-glass", },},
 
  ];  
 }
@@ -100,6 +102,7 @@ else if(sessionStorage.getItem('userRole')=='Manager'){
    { path: 'dashboardClient', detail : {label: 'Dashboard',iconClass: 'oj-navigationlist-item-icon fa fa-home'} },
    { path: 'help', detail : {label: 'Help',iconClass: 'oj-navigationlist-item-icon fa fa-question-circle'} },
    { path: "guideManageAdmin", detail: { label: "Help", iconClass: "fa-solid fa-magnifying-glass", },},
+   { path: "guideManageClient", detail: { label: "Help", iconClass: "fa-solid fa-magnifying-glass", },},
 
  ];  
 }
@@ -154,6 +157,7 @@ else{
    { path: 'privacyPolicy', detail : {label :'Privacy policy',iconClass: 'oj-navigationlist-item-icon fa fa-id-card'} },
    { path: 'help', detail : {label: 'Help',iconClass: 'oj-navigationlist-item-icon fa fa-question-circle'} },
    { path: "guideManageAdmin", detail: { label: "Help", iconClass: "fa-solid fa-magnifying-glass", },},
+   { path: "guideManageClient", detail: { label: "Help", iconClass: "fa-solid fa-magnifying-glass", },},
 
 /*           { path: 'postcode', detail : {label: 'Postcode',iconClass: 'oj-navigationlist-item-icon fa fa-calendar'} }
 */
