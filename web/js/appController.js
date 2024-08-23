@@ -66,7 +66,7 @@ if(sessionStorage.getItem('userRole')=='staff'){
    { path: 'privacyPolicy', detail : {label :'Privacy policy',iconClass: 'oj-navigationlist-item-icon fa fa-id-card'} },
    { path: "guideManageAdmin", detail: { label: "Help", iconClass: "fa-solid fa-magnifying-glass", },},
    { path: "guideManageClient", detail: { label: "Help", iconClass: "fa-solid fa-magnifying-glass", },},
-
+   { path: "guideManageStaff", detail: { label: "Help", iconClass: "fa-solid fa-magnifying-glass", },},
  ];  
 }else if(sessionStorage.getItem('userRole')=='Accounts'){
  var navData = [
@@ -77,6 +77,7 @@ if(sessionStorage.getItem('userRole')=='staff'){
    { path: 'help', detail : {label: 'Help',iconClass: 'oj-navigationlist-item-icon fa fa-question-circle'} },
    { path: "guideManageAdmin", detail: { label: "Help", iconClass: "fa-solid fa-magnifying-glass", },},
    { path: "guideManageClient", detail: { label: "Help", iconClass: "fa-solid fa-magnifying-glass", },},
+   { path: "guideManageStaff", detail: { label: "Help", iconClass: "fa-solid fa-magnifying-glass", },},
 
  ];  
 }
@@ -103,6 +104,7 @@ else if(sessionStorage.getItem('userRole')=='Manager'){
    { path: 'help', detail : {label: 'Help',iconClass: 'oj-navigationlist-item-icon fa fa-question-circle'} },
    { path: "guideManageAdmin", detail: { label: "Help", iconClass: "fa-solid fa-magnifying-glass", },},
    { path: "guideManageClient", detail: { label: "Help", iconClass: "fa-solid fa-magnifying-glass", },},
+   { path: "guideManageStaff", detail: { label: "Help", iconClass: "fa-solid fa-magnifying-glass", },},
 
  ];  
 }
@@ -158,6 +160,7 @@ else{
    { path: 'help', detail : {label: 'Help',iconClass: 'oj-navigationlist-item-icon fa fa-question-circle'} },
    { path: "guideManageAdmin", detail: { label: "Help", iconClass: "fa-solid fa-magnifying-glass", },},
    { path: "guideManageClient", detail: { label: "Help", iconClass: "fa-solid fa-magnifying-glass", },},
+   { path: "guideManageStaff", detail: { label: "Help", iconClass: "fa-solid fa-magnifying-glass", },},
 
 /*           { path: 'postcode', detail : {label: 'Postcode',iconClass: 'oj-navigationlist-item-icon fa fa-calendar'} }
 */
