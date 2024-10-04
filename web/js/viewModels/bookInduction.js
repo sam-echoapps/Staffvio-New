@@ -204,6 +204,7 @@ function (oj,ko,$, app, ojconverterutils_i18n_1, ArrayDataProvider, ojknockout_k
             self.inductionSubmit = ()=>{
                 var validInductionDet = self._checkValidationGroup("inductionUpdate");
                 if(validInductionDet){
+                    document.querySelector('#openBookingProgress').open();
                     $.ajax({
                         url: BaseURL + "/saveInduction",
                         method: 'POST',

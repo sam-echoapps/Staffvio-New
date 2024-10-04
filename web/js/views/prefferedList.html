@@ -48,7 +48,7 @@
           <oj-list-item-layout :aria-label="[['Details for ' +item.data.name]]">
           
             <div class="oj-typography-body-md">
-              <div class="oj-flex oj-sm-align-items-center">
+              <div class="oj-flex oj-sm-align-items-center" style="flex-wrap: nowrap;">
                 
                 <div class="oj-flex-item oj-md-padding-4x-end oj-sm-padding-12x-end">
                   <oj-list-item-layout class="oj-listitemlayout-padding-off oj-sm-padding-12x-end"
@@ -118,7 +118,7 @@
                       <oj-bind-text value="[[item.data.contactEmail]]"></oj-bind-text>
                     </div>
                   </div>
-                  <div slot="tertiary" class="oj-typography-body-lg oj-sm-padding-12x-end"
+                  <div slot="tertiary" class="oj-typography-body-lg"
                   :aria-label="[['Contact Phone ' + item.data.contactNumber]]">
                   <div>
                     <oj-bind-text value="[[item.data.contactNumber]]"></oj-bind-text>

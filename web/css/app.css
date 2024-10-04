@@ -1393,7 +1393,7 @@ max-width: 20rem;
 
 .sampleDemo{
   background-color: white;
-  height:100vh;
+ /*  height:100vh; */
 }
 
 .addClientAlign{
