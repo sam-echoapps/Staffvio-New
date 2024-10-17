@@ -37,7 +37,7 @@ function (oj,ko,$, app, ojconverterutils_i18n_1, ArrayDataProvider,  ojknockout_
                 self.dbsFile = ko.observable('');
                 self.updateFile = ko.observable('');
                 
-                self.visa_status = ko.observable();
+                self.visa_status = ko.observable('');
                 self.visaStatusList = ko.observableArray([]);
                 self.visaStatusList.push(
                     {'value' : 'Dependant Visa', 'label' : 'Dependant Visa'},
@@ -117,11 +117,16 @@ function (oj,ko,$, app, ojconverterutils_i18n_1, ArrayDataProvider,  ojknockout_
                                 self.passportShow(data[2][0])
                                 //console.log(self.passportShow())
 
+                                if(result2.length ==1){
+                                    self.passportCustomText(result2[0][4])
+                                    self.uploadError('')
+                                    }
                                 if(result2.length ==2){
                                 self.brp_expiry_date(result2[1][6])
                                 document.getElementById('BRPPreview').style.display='block';
                                 self.BRPShow(data[2][1])
-
+                                self.passportCustomText(result2[1][4])
+                                self.uploadError('')
                                 }
                                 if(result1[0][8] == "Pending") {
                                     self.rightStatus('Pending');
@@ -178,7 +183,7 @@ function (oj,ko,$, app, ojconverterutils_i18n_1, ArrayDataProvider,  ojknockout_
                 };
 
                 self.rightToworkSection = function (event,data) {
-                    if(self.visa_status()=='Not Applicable' || self.visa_status()=='Other'){
+                    if(self.visa_status()=='Not Applicable' || self.visa_status()=='Other' || self.passportCustomText() !='Please upload passport document'){
                         self.requiredContent(false)
                         self.uploadError('')
                         //self.expiry_date('1990-01-01')

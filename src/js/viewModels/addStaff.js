@@ -745,6 +745,7 @@ function (oj,ko,$, app, ojconverterutils_i18n_1, ArrayDataProvider,  ojknockout_
                      //alert('everything is valid; submit the form');
                 
                 //document.querySelector('#openAddClientDialog').close();
+                document.querySelector('#openAddStaffDialog').close();
                 document.querySelector('#openAddClientProgress').open();
                 self.addClientMsg('');
                 $.ajax({

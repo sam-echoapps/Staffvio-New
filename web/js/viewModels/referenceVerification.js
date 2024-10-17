@@ -46,6 +46,7 @@ define(['ojs/ojcore', 'knockout', 'appController', 'appUtils',
                         dataType: 'json',
                         success: function (data) {
                             self.userName(`${data[0][2]} ${data[0][3]}`)
+                            document.getElementById('loaderViewSec').style.display="none";
                         }
                     })
                 }
