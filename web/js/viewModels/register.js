@@ -7,7 +7,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'appController', 'appUtils', 'ojs/oj
         class register {
             constructor() {
                 var self = this;
-                
+                document.getElementById('loaderViewSec').style.display="none";
+
                 self.firstName = ko.observable();
                 self.lastName = ko.observable();
                 self.email = ko.observable();
