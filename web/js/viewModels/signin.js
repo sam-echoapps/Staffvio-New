@@ -45,9 +45,9 @@ define(['ojs/ojcore', 'knockout', 'appController', 'appUtils',
                         }
                         var key = "."+generateString(8);
                         $.ajax({
-                            //url: "/jobPlusLogin", 
+                            url: "/jobPlusLogin", 
                             //url: "http://169.197.183.168:8030/jobPlusLogin",
-                            url: "http://65.0.111.226:8030/jobPlusLogin",
+                            //url: "http://65.0.111.226:8030/jobPlusLogin",
                             type: 'POST',
                             data: JSON.stringify({
                                 user: self.OnePlaceuserName(),
@@ -65,14 +65,15 @@ define(['ojs/ojcore', 'knockout', 'appController', 'appUtils',
                             },
                             success: function (data) {
                                 if (data[1]== 'Y') {
-                                    //sessionStorage.setItem("BaseURL", "");
+                                    sessionStorage.setItem("BaseURL", "");
                                     //sessionStorage.setItem("BaseURL", "http://169.197.183.168:8030");
-                                    sessionStorage.setItem("BaseURL", "http://65.0.111.226:8030");
+                                    //sessionStorage.setItem("BaseURL", "http://65.0.111.226:8030");
                                     sessionStorage.setItem("userId", data[2]);
                                     sessionStorage.setItem("userName", data[3]);
                                     sessionStorage.setItem("userRole", data[4]);
                                     sessionStorage.setItem("clientId", data[5]);
                                     sessionStorage.setItem("fullName", data[6]);
+                                    sessionStorage.setItem("userStatus", data[7]);
                                     var login = localStorage.getItem('login');
                                     self.SignIn('Y');
                                     if(login == "yes"){

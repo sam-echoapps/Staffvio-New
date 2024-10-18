@@ -169,6 +169,14 @@ else{
 
 if (sessionStorage.getItem("userRole") == "staff") {
 
+  if (sessionStorage.getItem("userStatus") == "Pending") {
+    self.navMenu = [
+      /*           {"name": "Home","id": "home","icons": "fa-solid fa fa-home", "path":"home"},
+      */       {"name": "Dashboard","id": "dashboardStaff","icons": "fa-solid fa fa-home", "path":"dashboardStaff"},   
+         {"name": "My Profile","id": "myprofile","icons": "fa-solid fa fa-user", "path":"myprofile"}
+            ]
+  }else{
+
  self.navMenu = [
 /*           {"name": "Home","id": "home","icons": "fa-solid fa fa-home", "path":"home"},
 */       {"name": "Dashboard","id": "dashboardStaff","icons": "fa-solid fa fa-home", "path":"dashboardStaff"},   
@@ -181,6 +189,7 @@ if (sessionStorage.getItem("userRole") == "staff") {
    {"name": "Time Sheet","id": "timeSheetStaff","icons": "fa-solid fa fa-clock", "path":"timeSheetStaff"},
 /*           {"name": "Help","id": "help","icons": "fa-solid fa fa-question-circle", "path":"help"},
 */        ]
+ }
 }else if (sessionStorage.getItem("userRole") == "Accounts") {
  self.navMenu = [
    {"name": "My Profile","id": "clientProfileAccounts","icons": "fa-solid fa fa-user", "path":"clientProfileAccounts"},

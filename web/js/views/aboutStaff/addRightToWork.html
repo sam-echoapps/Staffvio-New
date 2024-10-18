@@ -43,18 +43,7 @@
           </div>
       </div>
       <hr>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="oj-text-color-danger"><oj-bind-text value='[[uploadError]]'></oj-bind-text></div>
-            <oj-file-picker  primary-text="[[passportFileText]]"
-              secondary-text="[[passportCustomText]]" on-oj-select="[[passportSubmit]]">
-              </oj-file-picker>
-              <div class="oj-text-color-danger"><oj-bind-text value='[[typeError]]'></oj-bind-text></div></br>
-        </div>
-        <div class="col-md-4 oj-xl-margin-4x oj-sm-margin-4x" id="passportPreview" style="display:none"></br></br>
-          <a on-click="[[previewClick]]" target="_blank"><b style="color:rgb(58, 30, 219);">Click here</b></a>
-        </div>
-      </div>
+     
       <div class="row">
         <div class="col-md-4"></br></br>
           <oj-input-date  label-hint="BRP Expiry Date" autocomplete="off" value="{{brp_expiry_date}}"></oj-input-date>
@@ -81,6 +70,18 @@
       <div class="col-md-12" id="sharecode_generator" style="display:none"><br/>
         Click on the link to generate a share code which will be used by your employer to check your right to work in the UK.
        <a href="https://www.gov.uk/prove-right-to-work" target="_blank"><b style="color:red;">Click here</b></a>
+        </div><br>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="oj-text-color-danger"><oj-bind-text value='[[uploadError]]'></oj-bind-text></div>
+              <oj-file-picker  primary-text="[[passportFileText]]"
+                secondary-text="[[passportCustomText]]" on-oj-select="[[passportSubmit]]">
+                </oj-file-picker>
+                <div class="oj-text-color-danger"><oj-bind-text value='[[typeError]]'></oj-bind-text></div></br>
+          </div>
+          <div class="col-md-4 oj-xl-margin-4x oj-sm-margin-4x" id="passportPreview" style="display:none"></br></br>
+            <a on-click="[[previewClick]]" target="_blank"><b style="color:rgb(58, 30, 219);">Click here</b></a>
+          </div>
         </div>
     </oj-validation-group></br>
     </div>

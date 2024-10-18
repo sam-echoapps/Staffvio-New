@@ -116,11 +116,17 @@ function (oj,ko,$, app, ojconverterutils_i18n_1, ArrayDataProvider,  ojknockout_
                                 document.getElementById('passportPreview').style.display='block';
                                 self.passportShow(data[2][0])
 
+                                if(result2.length ==1){
+                                    self.passportCustomText(result2[0][4])
+                                    self.uploadError('')
+                                    }
+
                                 if(result2.length ==2){
                                 self.brp_expiry_date(result2[1][6])
                                 document.getElementById('BRPPreview').style.display='block';
                                 self.BRPShow(data[2][1])
-
+                                self.passportCustomText(result2[1][4])
+                                self.uploadError('')
                                 }
                                 if(result1[0][8] == "Pending") {
                                     self.rightStatus('Pending');
@@ -176,7 +182,7 @@ function (oj,ko,$, app, ojconverterutils_i18n_1, ArrayDataProvider,  ojknockout_
                 };
 
                 self.rightToworkSection = function (event,data) {
-                    if(self.visa_status()=='Not Applicable' || self.visa_status()=='Other'){
+                    if(self.visa_status()=='Not Applicable' || self.visa_status()=='Other' || self.passportCustomText() !='Please upload passport document'){
                         self.requiredContent(false)
                         self.uploadError('')
                     }else{
@@ -388,9 +394,10 @@ function (oj,ko,$, app, ojconverterutils_i18n_1, ArrayDataProvider,  ojknockout_
                         },
                         success: function (data) {
                             document.querySelector('#openAddRightToWorkProgress').close();
-                            document.querySelector('#openAddRightToWorkResult').open();
-                            self.addRightToWorkMsg(data[0]);
+                            // document.querySelector('#openAddRightToWorkResult').open();
+                            // self.addRightToWorkMsg(data[0]);
                             console.log("Success")
+                            location.reload()
                         }
                     })   
                 }
